@@ -27,21 +27,16 @@ export const Hero: React.FC = () => {
     }
 
     // Parallax Effect Logic
-    let ticking = false;
+    let animationFrameId: number;
     
     const handleParallax = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          if (blobRef.current) {
-            const scrolled = window.scrollY;
-            // Move the blob at a slower speed (20% of scroll speed) to create depth
-            // Adjusted to 0.2 for a more subtle effect
-            blobRef.current.style.transform = `translateY(${scrolled * 0.2}px)`;
-          }
-          ticking = false;
-        });
-        ticking = true;
-      }
+      animationFrameId = window.requestAnimationFrame(() => {
+        if (blobRef.current) {
+          const scrolled = window.scrollY;
+          // Move the blob at a slower speed (20% of scroll speed) to create depth
+          blobRef.current.style.transform = `translateY(${scrolled * 0.2}px)`;
+        }
+      });
     };
 
     window.addEventListener('scroll', handleParallax);
@@ -49,6 +44,9 @@ export const Hero: React.FC = () => {
     return () => {
       observer.disconnect();
       window.removeEventListener('scroll', handleParallax);
+      if (animationFrameId) {
+        window.cancelAnimationFrame(animationFrameId);
+      }
     };
   }, []);
 
