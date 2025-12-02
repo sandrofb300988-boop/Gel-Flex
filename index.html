@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Depilação Termo-Adesiva Flex</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              serif: ['"Playfair Display"', 'serif'],
+              sans: ['"Lato"', 'sans-serif'],
+            },
+            colors: {
+              brand: {
+                light: '#FFF9F5',  // Very soft rose/cream
+                cream: '#FDF6E3',  // Warm sand
+                medium: '#FDE68A', // Amber 200
+                accent: '#F59E0B', // Amber 500
+                primary: '#D97706', // Amber 600 - Rich Honey
+                dark: '#292524',   // Warm Stone 800
+                green: '#059669',  // Emerald 600
+                red: '#E11D48',    // Rose 600 (Softer Red)
+                blue: '#2563EB',
+                surface: '#FFFAF9' // Delicate pinkish white
+              }
+            },
+            borderRadius: {
+              '4xl': '2.5rem',
+            },
+            keyframes: {
+              subtlePulse: {
+                '0%, 100%': { transform: 'scale(1)' },
+                '50%': { transform: 'scale(1.05)' },
+              }
+            },
+            animation: {
+              'subtle-pulse': 'subtlePulse 2s infinite',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      html { scroll-behavior: smooth; }
+      ::selection {
+        background-color: #FDE68A;
+        color: #D97706;
+      }
+      .blob-bg {
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23FFF1F2' d='M44.7,-76.4C58.9,-69.2,71.8,-59.1,79.6,-46.3C87.4,-33.5,90.1,-18,88.4,-2.9C86.7,12.2,80.6,26.9,71.2,38.9C61.8,50.9,49.1,60.2,35.6,67.6C22.1,75,7.8,80.5,-5.3,79.5C-18.4,78.5,-31.8,71,-43.3,62.2C-54.8,53.4,-64.4,43.3,-71.4,31.4C-78.4,19.5,-82.8,5.8,-79.8,-6.4C-76.8,-18.6,-66.4,-29.3,-55.9,-38.3C-45.4,-47.3,-34.8,-54.6,-23.4,-63.3C-12,-72,-0.2,-82.1,13.8,-84.8C27.8,-87.5,55.6,-82.8,44.7,-76.4Z' transform='translate(100 100)' /%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right top;
+        background-size: contain;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@18.2.0",
+    "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
+    "react-dom": "https://esm.sh/react-dom@18.2.0",
+    "lucide-react": "https://esm.sh/lucide-react@0.344.0",
+    "recharts": "https://esm.sh/recharts@2.12.0?external=react,react-dom",
+    "react/jsx-runtime": "https://esm.sh/react@18.2.0/jsx-runtime",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/"
+  }
+}
+</script>
+</head>
+  <body class="bg-brand-light text-brand-dark antialiased">
+    <div id="root"></div>
+  </body>
+</html>
