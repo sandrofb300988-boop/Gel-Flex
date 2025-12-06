@@ -16,6 +16,13 @@ export const FloatingCTA: React.FC = () => {
     return () => window.removeEventListener('scroll', toggleVisibility);
   }, []);
 
+  const handleCheckoutClick = () => {
+    // Verifica se o Pixel do Facebook está carregado e dispara o evento
+    if (typeof window !== 'undefined' && (window as any).fbq) {
+      (window as any).fbq('track', 'InitiateCheckout');
+    }
+  };
+
   if (!visible) return null;
 
   return (
@@ -29,6 +36,7 @@ export const FloatingCTA: React.FC = () => {
             href="https://lastlink.com/p/C22B0616A/checkout-payment/"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={handleCheckoutClick}
             className="bg-brand-green text-white px-6 py-3 rounded-full font-bold shadow-lg uppercase tracking-wide text-sm hover:bg-green-700 transition"
          >
             Adquirir

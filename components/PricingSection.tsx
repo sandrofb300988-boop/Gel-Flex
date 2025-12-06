@@ -2,6 +2,13 @@ import React from 'react';
 import { ShieldCheck, Sparkles, Star, Check } from 'lucide-react';
 
 export const PricingSection: React.FC = () => {
+  const handleCheckoutClick = () => {
+    // Verifica se o Pixel do Facebook está carregado e dispara o evento
+    if (typeof window !== 'undefined' && (window as any).fbq) {
+      (window as any).fbq('track', 'InitiateCheckout');
+    }
+  };
+
   return (
     <section id="comprar" className="py-24 bg-white relative overflow-hidden">
       <div className="absolute top-0 right-0 w-1/2 h-full bg-brand-light -skew-x-12 z-0 opacity-50"></div>
@@ -70,6 +77,7 @@ export const PricingSection: React.FC = () => {
                         href="https://lastlink.com/p/C22B0616A/checkout-payment/"
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={handleCheckoutClick}
                         className="w-full bg-brand-green hover:bg-emerald-700 text-white py-4 rounded-xl font-bold shadow-lg shadow-green-200 transform transition hover:-translate-y-1 duration-300 flex items-center justify-center gap-2"
                      >
                          <Sparkles className="w-5 h-5" />
