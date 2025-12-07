@@ -3,9 +3,9 @@ import { ShieldCheck, Sparkles, Star, Check, CreditCard, QrCode, Lock } from 'lu
 
 export const PricingSection: React.FC = () => {
   const handleCheckoutClick = () => {
-    // Verifica se o Pixel do Facebook está carregado e dispara o evento
-    if (typeof window !== 'undefined' && (window as any).fbq) {
-      (window as any).fbq('track', 'InitiateCheckout');
+    // Graças à declaração global em types.ts, o TS agora reconhece window.fbq
+    if (typeof window !== 'undefined' && window.fbq) {
+      window.fbq('track', 'InitiateCheckout');
     }
   };
 

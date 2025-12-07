@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { ShoppingBag, Sparkles } from 'lucide-react';
+import { SocialProofMessage } from '../types';
 
-const messages = [
-  { name: "Ana C.", location: "São Paulo, SP", action: "comprou o Guia Gel Flex", time: "há 2 min" },
-  { name: "Mariana S.", location: "Rio de Janeiro, RJ", action: "começou o ritual", time: "há 5 min" },
-  { name: "Fernanda L.", location: "Belo Horizonte, MG", action: "acabou de adquirir", time: "há 12 min" },
-  { name: "Carla M.", location: "Curitiba, PR", action: "comprou o Guia Gel Flex", time: "há 18 min" },
+const messages: SocialProofMessage[] = [
+  { type: 'purchase', name: "Ana C.", location: "São Paulo, SP", action: "comprou o Guia Gel Flex", time: "há 2 min" },
+  { type: 'purchase', name: "Mariana S.", location: "Rio de Janeiro, RJ", action: "começou o ritual", time: "há 5 min" },
+  { type: 'purchase', name: "Fernanda L.", location: "Belo Horizonte, MG", action: "acabou de adquirir", time: "há 12 min" },
+  { type: 'purchase', name: "Carla M.", location: "Curitiba, PR", action: "comprou o Guia Gel Flex", time: "há 18 min" },
   { type: 'motivational', text: "Chega de sofrimento. Sua pele merece liberdade." }
 ];
 
@@ -39,7 +40,7 @@ export const SocialProofWidget: React.FC = () => {
   }, [hasMounted]);
 
   const currentMsg = messages[currentMessageIndex];
-  const isMotivational = 'type' in currentMsg && currentMsg.type === 'motivational';
+  const isMotivational = currentMsg.type === 'motivational';
 
   return (
     <div 

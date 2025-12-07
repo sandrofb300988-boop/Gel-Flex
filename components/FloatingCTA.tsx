@@ -17,9 +17,9 @@ export const FloatingCTA: React.FC = () => {
   }, []);
 
   const handleCheckoutClick = () => {
-    // Verifica se o Pixel do Facebook está carregado e dispara o evento
-    if (typeof window !== 'undefined' && (window as any).fbq) {
-      (window as any).fbq('track', 'InitiateCheckout');
+    // Safe typed access to fbq thanks to types.ts global declaration
+    if (typeof window !== 'undefined' && window.fbq) {
+      window.fbq('track', 'InitiateCheckout');
     }
   };
 

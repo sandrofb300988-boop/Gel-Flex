@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Check, X, TrendingUp } from 'lucide-react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, TooltipProps } from 'recharts';
 
 const data = [
   { name: 'Mês 1', gelflex: 42, salao: 80, lamina: 30 },
@@ -13,12 +13,13 @@ const data = [
   { name: 'Mês 12', gelflex: 97, salao: 960, lamina: 360 },
 ];
 
-const CustomTooltip = ({ active, payload, label }: any) => {
+// Tipagem correta para o Tooltip do Recharts
+const CustomTooltip = ({ active, payload, label }: TooltipProps<number, string>) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-white p-4 border border-brand-medium rounded-xl shadow-lg">
         <p className="font-serif font-bold text-brand-dark mb-2">{label}</p>
-        {payload.map((entry: any, index: number) => (
+        {payload.map((entry, index: number) => (
           <p key={index} className="text-sm" style={{ color: entry.color }}>
             {entry.name}: <span className="font-bold">R$ {entry.value}</span>
           </p>
