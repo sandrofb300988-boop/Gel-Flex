@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Check, X, TrendingUp } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
@@ -30,6 +30,13 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 };
 
 export const ComparisonSection: React.FC = () => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    // Garante que o gráfico só renderize após o componente estar montado no DOM
+    setIsMounted(true);
+  }, []);
+
   return (
     <section id="comparativo" className="py-24 bg-brand-light relative scroll-mt-24">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -37,43 +44,43 @@ export const ComparisonSection: React.FC = () => {
           Por que elas escolhem <span className="text-brand-primary italic">Gel Flex</span>?
         </h2>
 
-        {/* Tabela de Comparação */}
-        <div className="shadow-2xl shadow-brand-dark/5 rounded-3xl bg-white overflow-hidden border border-brand-medium/20 mb-20">
+        {/* Tabela de Comparação - Wrapper com overflow-x-auto para responsividade */}
+        <div className="shadow-2xl shadow-brand-dark/5 rounded-3xl bg-white overflow-hidden border border-brand-medium/20 mb-20 overflow-x-auto">
           <table className="min-w-full">
             <thead>
               <tr className="bg-brand-medium/30">
-                <th scope="col" className="py-6 pl-8 text-left text-xs font-bold tracking-widest uppercase text-brand-dark">Método</th>
-                <th scope="col" className="py-6 text-left text-xs font-bold tracking-widest uppercase text-gray-500">O Padrão</th>
-                <th scope="col" className="py-6 text-left text-xs font-bold tracking-widest uppercase text-brand-primary">Gel Flex</th>
+                <th scope="col" className="py-6 pl-6 sm:pl-8 text-left text-[10px] sm:text-xs font-bold tracking-widest uppercase text-brand-dark min-w-[120px]">Método</th>
+                <th scope="col" className="py-6 text-left text-[10px] sm:text-xs font-bold tracking-widest uppercase text-gray-500 min-w-[140px]">O Padrão</th>
+                <th scope="col" className="py-6 text-left text-[10px] sm:text-xs font-bold tracking-widest uppercase text-brand-primary min-w-[140px]">Gel Flex</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
               <tr className="group hover:bg-brand-light/30 transition">
-                <td className="py-6 pl-8 text-sm font-bold text-gray-900">Cera Quente</td>
-                <td className="py-6 text-sm text-gray-500 flex items-center"><X className="w-4 h-4 text-red-400 mr-2"/> Agressiva e dolorosa</td>
-                <td className="py-6 text-sm text-brand-dark font-medium flex items-center"><Check className="w-5 h-5 text-brand-green mr-2"/> Calor suave, sem dor</td>
+                <td className="py-6 pl-6 sm:pl-8 text-sm font-bold text-gray-900">Cera Quente</td>
+                <td className="py-6 pr-4 text-sm text-gray-500"><div className="flex items-center"><X className="w-4 h-4 text-red-400 mr-2 flex-shrink-0"/> Agressiva e dolorosa</div></td>
+                <td className="py-6 pr-4 text-sm text-brand-dark font-medium"><div className="flex items-center"><Check className="w-5 h-5 text-brand-green mr-2 flex-shrink-0"/> Calor suave, sem dor</div></td>
               </tr>
               <tr className="group hover:bg-brand-light/30 transition">
-                <td className="py-6 pl-8 text-sm font-bold text-gray-900">Lâmina</td>
-                <td className="py-6 text-sm text-gray-500 flex items-center"><X className="w-4 h-4 text-red-400 mr-2"/> Pelo encrava e engrossa</td>
-                <td className="py-6 text-sm text-brand-dark font-medium flex items-center"><Check className="w-5 h-5 text-brand-green mr-2"/> Raiz removida, pele lisa</td>
+                <td className="py-6 pl-6 sm:pl-8 text-sm font-bold text-gray-900">Lâmina</td>
+                <td className="py-6 pr-4 text-sm text-gray-500"><div className="flex items-center"><X className="w-4 h-4 text-red-400 mr-2 flex-shrink-0"/> Pelo encrava e engrossa</div></td>
+                <td className="py-6 pr-4 text-sm text-brand-dark font-medium"><div className="flex items-center"><Check className="w-5 h-5 text-brand-green mr-2 flex-shrink-0"/> Raiz removida, pele lisa</div></td>
               </tr>
               <tr className="group hover:bg-brand-light/30 transition">
-                <td className="py-6 pl-8 text-sm font-bold text-gray-900">Cremes</td>
-                <td className="py-6 text-sm text-gray-500 flex items-center"><X className="w-4 h-4 text-red-400 mr-2"/> Cheiro forte, química</td>
-                <td className="py-6 text-sm text-brand-dark font-medium bg-brand-medium/10 flex items-center rounded-r-xl border-l-4 border-brand-primary"><Check className="w-5 h-5 text-brand-green mr-2"/> 100% Natural e seguro</td>
+                <td className="py-6 pl-6 sm:pl-8 text-sm font-bold text-gray-900">Cremes</td>
+                <td className="py-6 pr-4 text-sm text-gray-500"><div className="flex items-center"><X className="w-4 h-4 text-red-400 mr-2 flex-shrink-0"/> Cheiro forte, química</div></td>
+                <td className="py-6 pr-4 text-sm text-brand-dark font-medium bg-brand-medium/10 rounded-r-xl border-l-4 border-brand-primary"><div className="flex items-center"><Check className="w-5 h-5 text-brand-green mr-2 flex-shrink-0"/> 100% Natural e seguro</div></td>
               </tr>
               <tr className="group hover:bg-brand-light/30 transition">
-                <td className="py-6 pl-8 text-sm font-bold text-gray-900">Laser</td>
-                <td className="py-6 text-sm text-gray-500 flex items-center"><X className="w-4 h-4 text-red-400 mr-2"/> Custo altíssimo</td>
-                <td className="py-6 text-sm text-brand-dark font-medium flex items-center"><Check className="w-5 h-5 text-brand-green mr-2"/> Custo de centavos</td>
+                <td className="py-6 pl-6 sm:pl-8 text-sm font-bold text-gray-900">Laser</td>
+                <td className="py-6 pr-4 text-sm text-gray-500"><div className="flex items-center"><X className="w-4 h-4 text-red-400 mr-2 flex-shrink-0"/> Custo altíssimo</div></td>
+                <td className="py-6 pr-4 text-sm text-brand-dark font-medium"><div className="flex items-center"><Check className="w-5 h-5 text-brand-green mr-2 flex-shrink-0"/> Custo de centavos</div></td>
               </tr>
             </tbody>
           </table>
         </div>
 
         {/* Gráfico de Custo */}
-        <div className="bg-white rounded-3xl p-8 shadow-xl border border-brand-medium/20">
+        <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-brand-medium/20">
           <div className="flex items-center mb-8">
              <div className="bg-brand-green/10 p-3 rounded-full mr-4">
                 <TrendingUp className="w-6 h-6 text-brand-green" />
@@ -84,65 +91,71 @@ export const ComparisonSection: React.FC = () => {
              </div>
           </div>
           
-          <div className="h-[350px] w-full">
-            <ResponsiveContainer width="100%" height="100%">
-              <LineChart
-                data={data}
-                margin={{
-                  top: 5,
-                  right: 30,
-                  left: 0,
-                  bottom: 5,
-                }}
-              >
-                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
-                <XAxis 
-                    dataKey="name" 
-                    axisLine={false} 
-                    tickLine={false} 
-                    tick={{fill: '#9CA3AF', fontSize: 12}}
-                    dy={10}
-                />
-                <YAxis 
-                    axisLine={false} 
-                    tickLine={false} 
-                    tick={{fill: '#9CA3AF', fontSize: 12}}
-                    tickFormatter={(value) => `R$${value}`}
-                />
-                <Tooltip content={<CustomTooltip />} />
-                <Legend iconType="circle" wrapperStyle={{paddingTop: '20px'}} />
-                <Line 
-                    type="monotone" 
-                    dataKey="salao" 
-                    name="Salão (Cera)" 
-                    stroke="#E11D48" 
-                    strokeWidth={3} 
-                    dot={false}
-                    activeDot={{ r: 8 }} 
-                />
-                <Line 
-                    type="monotone" 
-                    dataKey="lamina" 
-                    name="Lâminas" 
-                    stroke="#9CA3AF" 
-                    strokeWidth={2} 
-                    dot={false} 
-                    strokeDasharray="5 5"
-                />
-                <Line 
-                    type="monotone" 
-                    dataKey="gelflex" 
-                    name="Gel Flex (Receita + Ingredientes)" 
-                    stroke="#059669" 
-                    strokeWidth={4} 
-                    dot={{ fill: '#059669', r: 4 }}
-                    activeDot={{ r: 8 }} 
-                />
-              </LineChart>
-            </ResponsiveContainer>
+          <div className="h-[300px] sm:h-[350px] w-full relative">
+            {isMounted ? (
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart
+                  data={data}
+                  margin={{
+                    top: 5,
+                    right: 10,
+                    left: -20,
+                    bottom: 5,
+                  }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
+                  <XAxis 
+                      dataKey="name" 
+                      axisLine={false} 
+                      tickLine={false} 
+                      tick={{fill: '#9CA3AF', fontSize: 10}}
+                      dy={10}
+                  />
+                  <YAxis 
+                      axisLine={false} 
+                      tickLine={false} 
+                      tick={{fill: '#9CA3AF', fontSize: 10}}
+                      tickFormatter={(value) => `R$${value}`}
+                  />
+                  <Tooltip content={<CustomTooltip />} />
+                  <Legend iconType="circle" wrapperStyle={{paddingTop: '20px', fontSize: '12px'}} />
+                  <Line 
+                      type="monotone" 
+                      dataKey="salao" 
+                      name="Salão (Cera)" 
+                      stroke="#E11D48" 
+                      strokeWidth={3} 
+                      dot={false}
+                      activeDot={{ r: 6 }} 
+                  />
+                  <Line 
+                      type="monotone" 
+                      dataKey="lamina" 
+                      name="Lâminas" 
+                      stroke="#9CA3AF" 
+                      strokeWidth={2} 
+                      dot={false} 
+                      strokeDasharray="5 5"
+                  />
+                  <Line 
+                      type="monotone" 
+                      dataKey="gelflex" 
+                      name="Gel Flex" 
+                      stroke="#059669" 
+                      strokeWidth={4} 
+                      dot={{ fill: '#059669', r: 4 }}
+                      activeDot={{ r: 6 }} 
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+            ) : (
+              <div className="w-full h-full bg-gray-50 animate-pulse rounded-xl flex items-center justify-center">
+                <p className="text-gray-400 text-sm">Carregando gráfico...</p>
+              </div>
+            )}
           </div>
-          <p className="text-center mt-6 text-sm text-gray-500 font-light italic">
-            *Estimativa baseada em 1 depilação completa por mês. O Gel Flex considera a compra da receita e o custo médio dos ingredientes domésticos.
+          <p className="text-center mt-6 text-xs sm:text-sm text-gray-500 font-light italic">
+            *Estimativa baseada em 1 depilação/mês. Gel Flex inclui receita + ingredientes.
           </p>
         </div>
 

@@ -19,28 +19,24 @@ export const IngredientsSection: React.FC = () => {
             {/* Card 1 */}
             <div className="bg-brand-light p-6 rounded-xl border border-brand-medium shadow-sm transform hover:-translate-y-2 transition duration-300">
               <h3 className="font-bold text-xl text-brand-primary mb-2">Amido de Milho</h3>
-              <span className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2 block">2 colheres de sopa</span>
               <p className="text-gray-700">Confere a base e a elasticidade ao gel.</p>
             </div>
 
             {/* Card 2 */}
             <div className="bg-brand-light p-6 rounded-xl border border-brand-medium shadow-sm transform hover:-translate-y-2 transition duration-300">
               <h3 className="font-bold text-xl text-brand-primary mb-2">Gelatina Incolor</h3>
-              <span className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2 block">1 colher de sopa</span>
               <p className="text-gray-700">Cria a adesão elástica e a textura de película.</p>
             </div>
 
             {/* Card 3 */}
             <div className="bg-brand-light p-6 rounded-xl border border-brand-medium shadow-sm transform hover:-translate-y-2 transition duration-300">
               <h3 className="font-bold text-xl text-brand-primary mb-2">Mel</h3>
-              <span className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2 block">1 colher de sobremesa</span>
               <p className="text-gray-700">Ação adesiva natural e poder hidratante.</p>
             </div>
 
             {/* Card 4 */}
             <div className="bg-brand-light p-6 rounded-xl border border-brand-medium shadow-sm transform hover:-translate-y-2 transition duration-300">
               <h3 className="font-bold text-xl text-brand-primary mb-2">Óleo Vegetal</h3>
-              <span className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2 block">½ colher</span>
               <p className="text-gray-700">Protege a pele e previne a irritação (coco, uva ou oliva).</p>
             </div>
              {/* Card 5 (Centered if 5 items, handled in grid for 4) */}
@@ -48,7 +44,6 @@ export const IngredientsSection: React.FC = () => {
           
            <div className="max-w-md mx-auto mt-8 bg-brand-light p-6 rounded-xl border border-brand-medium shadow-sm transform hover:-translate-y-2 transition duration-300 relative z-10 text-center">
               <h3 className="font-bold text-xl text-brand-primary mb-2">Água</h3>
-              <span className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2 block">3 colheres</span>
               <p className="text-gray-700">O veículo que une todos os ingredientes.</p>
             </div>
         </div>

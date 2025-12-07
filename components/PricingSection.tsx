@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Sparkles, Star, Check } from 'lucide-react';
+import { ShieldCheck, Sparkles, Star, Check, CreditCard, QrCode, Lock } from 'lucide-react';
 
 export const PricingSection: React.FC = () => {
   const handleCheckoutClick = () => {
@@ -78,16 +78,42 @@ export const PricingSection: React.FC = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={handleCheckoutClick}
-                        className="w-full bg-brand-green hover:bg-emerald-700 text-white py-4 rounded-xl font-bold shadow-lg shadow-green-200 transform transition hover:-translate-y-1 duration-300 flex items-center justify-center gap-2"
+                        className="w-full bg-brand-green hover:bg-emerald-700 text-white py-4 rounded-xl font-bold shadow-lg shadow-green-200 transform transition hover:-translate-y-1 duration-300 flex items-center justify-center gap-2 mb-8"
                      >
                          <Sparkles className="w-5 h-5" />
                          QUERO COMPRAR AGORA
                      </a>
 
-                     <div className="mt-6 flex items-center justify-center text-gray-400 text-xs gap-4">
-                         <span className="flex items-center"><ShieldCheck className="w-4 h-4 mr-1"/> Compra Segura</span>
-                         <span className="flex items-center"><ShieldCheck className="w-4 h-4 mr-1"/> 7 Dias de Garantia</span>
+                     {/* Payment & Security Seals - Enhanced Visibility */}
+                     <div className="space-y-5 pt-6 border-t border-gray-100">
+                        {/* Payment Methods */}
+                        <div className="flex flex-col items-center">
+                            <p className="text-[11px] text-gray-400 uppercase tracking-widest font-bold mb-3">Pagamento Seguro via</p>
+                            <div className="flex items-center gap-3 w-full justify-center">
+                                <div className="flex items-center justify-center gap-2 bg-green-50 px-4 py-2 rounded-lg border border-green-100 text-brand-dark w-1/2 shadow-sm transition-transform hover:-translate-y-0.5">
+                                    <QrCode className="w-5 h-5 text-brand-green" />
+                                    <span className="text-xs font-bold text-green-800">PIX</span>
+                                </div>
+                                <div className="flex items-center justify-center gap-2 bg-gray-50 px-4 py-2 rounded-lg border border-gray-200 text-brand-dark w-1/2 shadow-sm transition-transform hover:-translate-y-0.5">
+                                    <CreditCard className="w-5 h-5 text-brand-dark" />
+                                    <span className="text-xs font-bold text-gray-700">Cartão</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Security Badges */}
+                        <div className="flex items-center justify-center gap-6 text-xs text-gray-500 bg-gray-50 py-2.5 rounded-full mx-2">
+                             <div className="flex items-center gap-1.5">
+                                <ShieldCheck className="w-4 h-4 text-brand-green" />
+                                <span className="font-medium">Compra Segura</span>
+                             </div>
+                             <div className="flex items-center gap-1.5">
+                                <Lock className="w-4 h-4 text-brand-primary" />
+                                <span className="font-medium">Criptografia SSL</span>
+                             </div>
+                        </div>
                      </div>
+
                 </div>
             </div>
         </div>
