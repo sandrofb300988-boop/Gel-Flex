@@ -51,7 +51,7 @@
       }
     </script>
 
-    <!-- Facebook Pixel -->
+    <!-- Facebook Pixel Script (Keep in Head) -->
     <script>
       !function(f,b,e,v,n,t,s)
       {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -65,10 +65,7 @@
       fbq('init', '1505775890645611');
       fbq('track', 'PageView');
     </script>
-    <noscript><img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=1505775890645611&ev=PageView&noscript=1"
-    /></noscript>
-  <script type="importmap">
+<script type="importmap">
 {
   "imports": {
     "react": "https://aistudiocdn.com/react@^19.2.1",
@@ -83,6 +80,11 @@
 </script>
 </head>
   <body class="bg-brand-light text-brand-dark antialiased font-sans">
+    <!-- Facebook Pixel Noscript (Moved to Body to fix parser error) -->
+    <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1505775890645611&ev=PageView&noscript=1"
+    /></noscript>
+    
     <div id="root"></div>
     <script type="module" src="./index.tsx"></script>
   </body>
